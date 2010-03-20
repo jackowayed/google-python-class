@@ -49,7 +49,7 @@ def count_words(filename):
 
 def print_kv(keys, hash):
   for key in keys:
-    print key + ' ' + str(hash[key])
+    print key, str(hash[key])
 
 def last(tuple):
   return tuple[-1]
