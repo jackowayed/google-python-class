@@ -39,6 +39,30 @@ print_words() and print_top().
 
 import sys
 
+def count_words(filename):
+  words = {}
+  f = open(filename, 'rU')
+  for word in f.read().lower().split():
+    if word in words: words[word] += 1
+    else: words[word] = 1
+  return words
+
+def print_kv(keys, hash):
+  for key in keys:
+    print key + ' ' + str(hash[key])
+
+def last(tuple):
+  return tuple[-1]
+
+def print_words(filename):
+  word_count = count_words(filename)
+  print_kv(sorted(word_count.keys()), word_count)
+
+def print_top(filename):
+  word_count = count_words(filename)
+  sorted_keys = [ t[0] for t in sorted(word_count.items(), key=last, reverse=True) ]
+  print_kv(sorted_keys[:20], word_count)
+
 # +++your code here+++
 # Define print_words(filename) and print_top(filename) functions.
 # You could write a helper utility function that reads a file
