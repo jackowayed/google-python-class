@@ -45,6 +45,7 @@ def count_words(filename):
   for word in f.read().lower().split():
     if word in words: words[word] += 1
     else: words[word] = 1
+  f.close()
   return words
 
 def print_kv(keys, hash):
